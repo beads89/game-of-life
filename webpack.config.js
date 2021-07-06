@@ -16,7 +16,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: 'RENAME PROJECT',
+      title: 'Conways Game of Life',
       template: './src/index.html',
       inject: 'body'
     }),
