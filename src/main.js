@@ -1,51 +1,73 @@
-import $ from 'jquery';
+// import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 
-function makeGrid(cols, rows) {
-  let arr = new Array(cols);
-  for (let i = 0; i < arr.length; i++) {
-    arr[i] = new Array(rows);
+let rows = 30;
+let cols = 60;
+
+// let playing = false;
+
+let grid = new Array(rows);
+let nextGrid = new Array(rows);
+
+function createGrid() {
+  for (let i = 0; i < rows; i++) {
+    grid[i] = new Array(cols);
+    nextGrid[i] = new Array(cols);
   }
-  return arr;
 }
 
-
-let grid;
-let cols;
-let rows;
-let resolution = 10;
-
-function setup() {
-  createCanvas(600, 400);
-  cols = width / resolution;
-  rows = height / resolution;
-  grid = makeGrid(cols, rows);
-  for (let i = 0; i < cols; i++) {
-    for (let j = 0; j < rows; j++) {
-      grid[i][j] = floor(random(2));
+function resetGrid() {
+  for (let i = 0; i < rows; i++) {
+    for (let j = 0; j < cols; j++) {
+      grid[i][j] = 0;
+      nextGrid[i][j] = 0;
     }
   }
 }
 
-function draw() {
-  background(0);
-  for (let i = 0; i < cols; i++) {
-    for (let j = 0; j < rows; j++) {
-      let x = i * resolution;
-      let y = j * resolution;
-      if (grid[i][j] === 1) {
-        fill(255);
-        rect(x,y,resolution,resolution);
-      }
-    }
-  }
+// function nextGeneration() {
+//   for (let i = 0; i < rows; i++) {
+//     for (let j = 0; j < cols; j++) {
+//       grid[i][j] = nextGrid[i][j];
+//       nextGrid[i][j] = 0;
+//     }
+//   }
+// }
+
+//initialize
+function initialize() {
+  createGameBoard();
+  createGrid();
+  resetGrid();
+// setupControlButtons()
 }
 
+function createGameBoard()  {
+  let gameBoard = document.getElementById('gameBoard');
+  if (!gameBoard)  {
+  console.error("No game board");
+  }
+  let table = document.createElement("table");
+  for (let i = 0; i < rows; i++)  {
+    let tr = document.createElement("tr");
+    for (let j = 0; j < cols; j++)  {
+      let cell = document.createElement("td");
+      cell.setAttribute("id", i + "_" + j);
+      cell.setAttribute("class", "dead");
+      // cell.onclick = cellClickHandler;
+      tr.appendChild(cell);
+    }
+    table.appendChild(tr);
+  }
+  gameBoard.appendChild(table);
+}
+
+window.onload = initialize;
 
 
-
+// original grid -> apply rules to original grid-> grid with rules applied becomes new nextGrid -> new nextGrid becomes grid -> apply rules to this new grid -> grid becomes newGrid
 
 
 
@@ -85,5 +107,52 @@ function draw() {
 
 
 // $(document).ready(function() {
-  
+
 // });
+
+
+
+// P5 CODE ____________________________________
+
+
+// function makeGrid(cols, rows) {
+//   let arr = new Array(cols);
+//   for (let i = 0; i < arr.length; i++) {
+//     arr[i] = new Array(rows);
+//   }
+//   return arr;
+// }
+
+
+// let grid;
+// let cols;
+// let rows;
+// let resolution = 10;
+
+// function setup() {
+//   createCanvas(600, 400);
+//   cols = width / resolution;
+//   rows = height / resolution;
+//   grid = makeGrid(cols, rows);
+//   for (let i = 0; i < cols; i++) {
+//     for (let j = 0; j < rows; j++) {
+//       grid[i][j] = floor(random(2));
+//     }
+//   }
+// }
+
+// function draw() {
+//   background(0);
+//   for (let i = 0; i < cols; i++) {
+//     for (let j = 0; j < rows; j++) {
+//       let x = i * resolution;
+//       let y = j * resolution;
+//       if (grid[i][j] === 1) {
+//         fill(255);
+//         rect(x,y,resolution,resolution);
+//       }
+//     }
+//   }
+// }
+
+
