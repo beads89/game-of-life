@@ -116,7 +116,7 @@ grid-template: repeat
 
 
 Co-authored-by: Kristen Hopper <hopperdavis@gmail.com>
-Co-authored-by: Masha Ivy <mashaivy9l@gmail.com>
+Co-authored-by: Masha Ivy <mashaivy9@gmail.com>
 Co-authored-by: Kody Gordon <gordon.km89@gmail.com>
 Co-authored-by: Brandon Eads <brandon181989@hotmail.com>
 

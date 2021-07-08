@@ -11,6 +11,8 @@ let cols = 60;
 let grid = new Array(rows);
 let nextGrid = new Array(rows);
 
+// Order of operations: original grid -> apply rules to original grid-> grid with rules applied becomes new nextGrid -> new nextGrid becomes grid -> apply rules to this new grid -> grid becomes newGrid -> etc., etc.
+
 function createGrid() {
   for (let i = 0; i < rows; i++) {
     grid[i] = new Array(cols);
@@ -27,16 +29,16 @@ function resetGrid() {
   }
 }
 
-// function nextGeneration() {
-//   for (let i = 0; i < rows; i++) {
-//     for (let j = 0; j < cols; j++) {
-//       grid[i][j] = nextGrid[i][j];
-//       nextGrid[i][j] = 0;
-//     }
-//   }
-// }
+function nextGeneration() {
+  for (let i = 0; i < rows; i++) {
+    for (let j = 0; j < cols; j++) {
+      grid[i][j] = nextGrid[i][j];
+      nextGrid[i][j] = 0;
+    }
+  }
+}
 
-//initialize
+//initialize the game
 function initialize() {
   createGameBoard();
   createGrid();
@@ -64,10 +66,23 @@ function createGameBoard()  {
   gameBoard.appendChild(table);
 }
 
+function getNeighbors(row, col) {
+  let neighbors = 0;
+  if (grid[row-1],[col] === alive) neighbors++;
+  if (grid[row],[col-1] === alive) neighbors++;
+
+
+
+
+  return neighbors;
+}
+
+
 window.onload = initialize;
 
 
-// original grid -> apply rules to original grid-> grid with rules applied becomes new nextGrid -> new nextGrid becomes grid -> apply rules to this new grid -> grid becomes newGrid
+// if cellNeighbor === 2 || === 3
+//     cellAlive
 
 
 
