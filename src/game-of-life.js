@@ -7,8 +7,8 @@ function GameOfLife (array, grid, lifeStatus, neighbors){
 
     function Grid (cells, rows, cols){
       this.cells = [];
-      this.rows = 
-      this.cols = 
+      this.rows =
+      this.cols =
   }
 
     function Cell (lifeStatus) {
@@ -31,6 +31,7 @@ GameOfLife.prototype.checkNeighbourCells() = function() {
   dead }
   else if (neighbor === 3)
   }
+}
 
   function getNeighbors(row, col) {
     let neighbors = 0;

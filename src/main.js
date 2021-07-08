@@ -25,7 +25,7 @@ function resetGrid() {
     for (let j = 0; j < cols; j++) {
       grid[i][j] = 0;
       nextGrid[i][j] = 0;
-    }
+    } 
   }
 }
 
